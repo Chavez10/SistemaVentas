@@ -29,11 +29,13 @@ namespace SistemaVentas.Controllers
         // GET: User
         public ActionResult Index()
         {
+            
             return View();
         }
 
         public ActionResult CreateOrUpdateUser()
         {
+            usuarioRepository.GetUsuarios();
             return View();
         }
         [HttpPost]
