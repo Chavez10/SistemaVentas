@@ -1,0 +1,125 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda Online</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.css">
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Madurai:wght@500&display=swap" rel="stylesheet">
+    <style>
+        .dropdown-item {
+            color: white
+        }
+
+            .dropdown-item:hover {
+                color: cyan;
+                background-color: transparent
+            }
+
+        * {
+            font-family: 'Hind Madurai', sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid" style="padding-right: 0px!important;padding-left: 0px!important;">
+        <div class="row">
+            <div class="col-md-12">
+                <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                    <a class="navbar-brand" href="/">
+                        <svg xmlns="http://www.w3.org/2000/svg" style="margin-bottom:5px" width="23" height="23s" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
+                            <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+                        </svg> STORE
+                    </a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="/"> Home <span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#"> Productos </a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Categorías
+                                </a>
+                                <div class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="#">Tecnología</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="#">Entretenimiento</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="#">Deportes</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="#">Alimentos</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="#">Mascotas</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="#">Ropa y Calzado</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="#">Joyería</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="#">Jardinería</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="#">Herramientas</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="#">Accesorios</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="#">Carteras/Bolsos</a>
+                                </div>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#"> Contacto </a>
+                            </li>
+                        </ul>
+                        <div class="my-2 my-lg-0">
+
+
+                            @if (Session["UserName"] != null)
+                            {
+                            <label class="my-2 my-lg-0" style="color:wheat">BIENVENIDO, <span></span> &nbsp;&nbsp;</label>
+                                <a href="#" style="font-size:12px;color:wheat" class="my-2 my-lg-0">
+                                    <svg xmlns="http://www.w3.org/2000/svg" style="margin-bottom:3px" width="16" height="16" fill="currentColor" class="bi bi-lock" viewBox="0 0 16 16">
+                                        <path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2zM5 8h6a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z" />
+                                    </svg> Cerrar Sesión
+                                </a>
+                            }
+                            else
+                            {
+                                <a href="@Url.Action("Login","Login")" style="font-size:12px;color:wheat" class="my-2 my-lg-0">
+                                    <svg xmlns="http://www.w3.org/2000/svg" style="margin-bottom:3px"s width="16" height="16" fill="currentColor" class="bi bi-unlock" viewBox="0 0 16 16">
+                                        <path d="M11 1a2 2 0 0 0-2 2v4a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h5V3a3 3 0 0 1 6 0v4a.5.5 0 0 1-1 0V3a2 2 0 0 0-2-2zM3 8a1 1 0 0 0-1 1v5a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V9a1 1 0 0 0-1-1H3z" />
+                                    </svg> INICIAR SESIÓN
+                                </a>
+                                <span style="color:wheat">/</span>
+                                <a href="@Url.Action("CreateOrUpdateUser","User")" style="font-size:12px;color:wheat" class="my-2 my-lg-0">
+                                    <svg xmlns="http://www.w3.org/2000/svg" style="margin-bottom:3px" width="16" height="16" fill="currentColor" class="bi bi-person-plus" viewBox="0 0 16 16">
+                                        <path d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H1s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C9.516 10.68 8.289 10 6 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z" />
+                                        <path fill-rule="evenodd" d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z" />
+                                    </svg> REGISTRARSE
+                                </a>
+                            }
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid body-content">
+        @RenderBody()
+        <hr />
+        <footer class="text-center">
+            <p>&copy; @DateTime.Now.Year - Tienda Online</p>
+        </footer>
+    </div>
+</body>
+</html>
