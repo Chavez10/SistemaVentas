@@ -3,6 +3,7 @@ using DAL.Models;
 using DAL.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,6 +23,19 @@ namespace BAL.Services
         public IEnumerable<Usuarios> GetUsuarios()
         {
             return context.usuarios.ToList();
+        }
+
+        public async Task<bool> UserEmailExits(string Email)
+        {
+            return await context.usuarios.Where(x => x.email.ToLower().Equals(Email.ToLower())).AnyAsync();
+        }
+        public async Task<bool> UserNameExits(string name)
+        {
+            return await context.usuarios.Where(x => x.UserName.ToLower().Equals(name.ToLower())).AnyAsync();
+        }
+        public async Task<bool> UserDocumentExits(string dui)
+        {
+            return await context.UserInfo.Where(x => x.documento.ToLower().Equals(dui.ToLower())).AnyAsync();
         }
 
         public async Task<bool> CreateNewUser(AgregarUsuario modelo)

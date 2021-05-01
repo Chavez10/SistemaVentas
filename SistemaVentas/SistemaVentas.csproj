@@ -146,6 +146,24 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="images\usuario.png" />
+    <Content Include="Scripts\alertifyjs\alertify.js" />
+    <Content Include="Scripts\alertifyjs\alertify.min.js" />
+    <Content Include="Scripts\alertifyjs\css\alertify.css" />
+    <Content Include="Scripts\alertifyjs\css\alertify.min.css" />
+    <Content Include="Scripts\alertifyjs\css\alertify.rtl.css" />
+    <Content Include="Scripts\alertifyjs\css\alertify.rtl.min.css" />
+    <Content Include="Scripts\alertifyjs\css\themes\bootstrap.css" />
+    <Content Include="Scripts\alertifyjs\css\themes\bootstrap.min.css" />
+    <Content Include="Scripts\alertifyjs\css\themes\bootstrap.rtl.css" />
+    <Content Include="Scripts\alertifyjs\css\themes\bootstrap.rtl.min.css" />
+    <Content Include="Scripts\alertifyjs\css\themes\default.css" />
+    <Content Include="Scripts\alertifyjs\css\themes\default.min.css" />
+    <Content Include="Scripts\alertifyjs\css\themes\default.rtl.css" />
+    <Content Include="Scripts\alertifyjs\css\themes\default.rtl.min.css" />
+    <Content Include="Scripts\alertifyjs\css\themes\semantic.css" />
+    <Content Include="Scripts\alertifyjs\css\themes\semantic.min.css" />
+    <Content Include="Scripts\alertifyjs\css\themes\semantic.rtl.css" />
+    <Content Include="Scripts\alertifyjs\css\themes\semantic.rtl.min.css" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -355,4 +373,3 @@
     <Copy SourceFiles="@(RoslynFiles)" DestinationFolder="$(WebProjectOutputDir)\bin\roslyn" SkipUnchangedFiles="true" Retries="$(CopyRetryCount)" RetryDelayMilliseconds="$(CopyRetryDelayMilliseconds)" />
   </Target>
 </Project>
-

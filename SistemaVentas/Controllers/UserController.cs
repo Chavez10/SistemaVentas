@@ -46,9 +46,23 @@ namespace SistemaVentas.Controllers
 
             if (ModelState.IsValid)
             {
-                modelo.pass = UserHelper.EncriptarPassword(modelo.pass);
-                var data = await usuarioRepository.CreateNewUser(modelo);
-                exito = data;
+                var EmailExits = await usuarioRepository.UserEmailExits(modelo.email);
+                var UserNExits = await usuarioRepository.UserNameExits(modelo.UserName);
+                var DocuExist = await usuarioRepository.UserDocumentExits(modelo.documento);
+                if (!EmailExits && !UserNExits && !DocuExist)
+                {
+                    modelo.pass = UserHelper.EncriptarPassword(modelo.pass);
+                    var data = await usuarioRepository.CreateNewUser(modelo);
+                    exito = data;
+                }
+                
+                if(EmailExits)
+                    ViewBag.EmailExits = true;
+                if (UserNExits)
+                    ViewBag.UserNExits = true;
+                if (DocuExist)
+                    ViewBag.DocuExist = true;
+
 
                 if (exito == true)
                     return RedirectToAction("Login", "Login");
