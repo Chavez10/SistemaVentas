@@ -43,8 +43,8 @@ namespace BAL.Services
 
                 var infos_ = new UserInfo
                 {
-                    NombreUsuario = modelo.NombreUsuario,
-                    ApellidoUsuario = modelo.ApellidoUsuario,
+                    NombreUsuario = modelo.Nombre,
+                    ApellidoUsuario = modelo.Apellido,
                     FechaNacimiento = modelo.FechaNacimiento,
                     direccion = modelo.direccion,
                     idUser = user_.idUser
