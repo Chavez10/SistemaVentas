@@ -56,6 +56,10 @@
     <Compile Include="Migrations\202104300452254_seedsConfiguration.designer.cs">
       <DependentUpon>202104300452254_seedsConfiguration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202105010503381_CamposRequeridos.cs" />
+    <Compile Include="Migrations\202105010503381_CamposRequeridos.designer.cs">
+      <DependentUpon>202105010503381_CamposRequeridos.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ComprasContext.cs" />
     <Compile Include="Models\Role.cs" />
@@ -71,6 +75,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202104300452254_seedsConfiguration.resx">
       <DependentUpon>202104300452254_seedsConfiguration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202105010503381_CamposRequeridos.resx">
+      <DependentUpon>202105010503381_CamposRequeridos.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

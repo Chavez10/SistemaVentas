@@ -12,8 +12,10 @@ namespace DAL.Models
     {
         [Key]
         public int idUser { get; set; }
+        [Required(ErrorMessage = "El campo nombre de usuario es requerido")]
         public string UserName { get; set; }
         public string email { get; set; }
+        [Required(ErrorMessage = "El campo contraseña es requerido")]
         public string pass { get; set; }
         public int roleId { get; set; }
 
