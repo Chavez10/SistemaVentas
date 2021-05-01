@@ -6,6 +6,7 @@ using SistemaVentas.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
@@ -39,20 +40,20 @@ namespace SistemaVentas.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult CreateOrUpdateUser(AgregarUsuario modelo)
+        public async Task<ActionResult> CreateOrUpdateUser(AgregarUsuario modelo)
         {
             bool exito = false;
 
             if (ModelState.IsValid)
             {
                 modelo.pass = UserHelper.EncriptarPassword(modelo.pass);
-                var data = usuarioRepository.CreateNewUser(modelo);
-                exito = data.Result;
+                var data = await usuarioRepository.CreateNewUser(modelo);
+                exito = data;
+
+                if (exito == true)
+                    return RedirectToAction("Login", "Login");
             }
-
-            if (exito == true)
-                ViewBag.Correcto = true;
-
+            
             return View(modelo);
 
         }

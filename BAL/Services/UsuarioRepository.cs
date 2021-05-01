@@ -37,9 +37,7 @@ namespace BAL.Services
                     roleId = context.roles.Where(x => x.NombreRol == rol.user).Select(x => x.IdRol).FirstOrDefault()
                 };
 
-                context.usuarios.Add(user_);
-                //context.Entry(user_).State = System.Data.Entity.EntityState.Added;
-                await context.SaveChangesAsync();
+                var us_ = await CreateUser(user_);                
 
                 var infos_ = new UserInfo
                 {
@@ -47,11 +45,17 @@ namespace BAL.Services
                     ApellidoUsuario = modelo.Apellido,
                     FechaNacimiento = modelo.FechaNacimiento,
                     direccion = modelo.direccion,
-                    idUser = user_.idUser
+                    documento = modelo.documento,
+                    telefono = modelo.telefono,
+                    idUser = us_.idUser
                 };
-                await context.SaveChangesAsync();
 
-                sucess = true;
+                var in_ = await CreateUserInfo(infos_);
+
+                if (in_.IdUserInformation > 0 && us_.idUser > 0)
+                    sucess = true;
+                else
+                    sucess = false;
             }
             catch (Exception ex)
             {
@@ -62,6 +66,21 @@ namespace BAL.Services
 
         }
 
+        private async Task<Usuarios> CreateUser(Usuarios model)
+        {
+            context.usuarios.Add(model);
+            await context.SaveChangesAsync();
+
+            return model;
+        }
+
+        private async Task<UserInfo> CreateUserInfo(UserInfo model)
+        {
+            context.UserInfo.Add(model);
+            await context.SaveChangesAsync();
+
+            return model;
+        }
 
 
         private bool disposed = false;
