@@ -146,6 +146,7 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="images\usuario.png" />
+    <Content Include="loaderio-dc70124d933a9aab224cb80cc614a27a.txt" />
     <Content Include="Scripts\alertifyjs\alertify.js" />
     <Content Include="Scripts\alertifyjs\alertify.min.js" />
     <Content Include="Scripts\alertifyjs\css\alertify.css" />
