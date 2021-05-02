@@ -57,7 +57,7 @@ namespace SistemaVentas.Controllers
                 }
                 else
                 {
-                    ModelState.AddModelError("InvalidCredentials", "El usuario o Contraseña son incorrectos");
+                    ViewBag.ErrorUser = true;
                 }
             }
             return View();
