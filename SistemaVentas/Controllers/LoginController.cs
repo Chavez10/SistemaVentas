@@ -1,5 +1,6 @@
 ﻿using BAL.IServices;
 using BAL.Services;
+using DAL.Helpers;
 using DAL.Models;
 using SistemaVentas.Helpers;
 using System;
@@ -44,7 +45,7 @@ namespace SistemaVentas.Controllers
         {
             if (ModelState.IsValid)
             {
-                var contra = UserHelper.EncriptarPassword(usuarios.pass);
+                var contra = GeneralHelper.EncriptarPassword(usuarios.pass);
                 var obj = await loginRepository.IniciarSesion(usuarios.UserName,contra);
 
                 if(obj != null)

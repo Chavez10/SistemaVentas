@@ -52,6 +52,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Helpers\GeneralHelper.cs" />
     <Compile Include="Migrations\202104300452254_seedsConfiguration.cs" />
     <Compile Include="Migrations\202104300452254_seedsConfiguration.designer.cs">
       <DependentUpon>202104300452254_seedsConfiguration.cs</DependentUpon>
@@ -60,8 +61,19 @@
     <Compile Include="Migrations\202105010503381_CamposRequeridos.designer.cs">
       <DependentUpon>202105010503381_CamposRequeridos.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202105070342025_Poducto.cs" />
+    <Compile Include="Migrations\202105070342025_Poducto.designer.cs">
+      <DependentUpon>202105070342025_Poducto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202105070407521_update-Model.cs" />
+    <Compile Include="Migrations\202105070407521_update-Model.designer.cs">
+      <DependentUpon>202105070407521_update-Model.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\CarritoCompras.cs" />
     <Compile Include="Models\ComprasContext.cs" />
+    <Compile Include="Models\Enums.cs" />
+    <Compile Include="Models\Productos.cs" />
     <Compile Include="Models\Role.cs" />
     <Compile Include="Models\UserInfo.cs" />
     <Compile Include="Models\Usuarios.cs" />
@@ -78,6 +90,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202105010503381_CamposRequeridos.resx">
       <DependentUpon>202105010503381_CamposRequeridos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202105070342025_Poducto.resx">
+      <DependentUpon>202105070342025_Poducto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202105070407521_update-Model.resx">
+      <DependentUpon>202105070407521_update-Model.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

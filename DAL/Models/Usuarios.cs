@@ -21,5 +21,8 @@ namespace DAL.Models
 
         [ForeignKey("idUser")]
         public ICollection<UserInfo> UserInfos { get; set; }
+
+        [ForeignKey("IdUsuario")]
+        public ICollection<CarritoCompras> CarritoCompras { get; set; }
     }
 }

@@ -7,6 +7,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static DAL.Models.Enums;
 
 namespace BAL.Services
 {
@@ -48,7 +49,7 @@ namespace BAL.Services
                     UserName = modelo.UserName,
                     email = modelo.email,
                     pass = modelo.pass,
-                    roleId = context.roles.Where(x => x.NombreRol == rol.user).Select(x => x.IdRol).FirstOrDefault()
+                    roleId = (int)rol.user
                 };
 
                 var us_ = await CreateUser(user_);                

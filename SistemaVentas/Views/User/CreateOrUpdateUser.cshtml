@@ -1,28 +1,14 @@
 ﻿@using DAL.ViewModels;
 @model AgregarUsuario
 @{
-    ViewBag.Title = "CreateOrUpdateUser";
-    Layout = null;
+    ViewBag.Title = "Registro Usuario";
+    Layout = "~/Views/Shared/_LayoutGeneral.cshtml"; ;
 }
-<html>
-<head>
-    <meta charset="utf-8" />
-    <title>Registro Usuario</title>
-    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js" integrity="sha512-pHVGpX7F/27yZ0ISY+VVjyULApbDlD0/X0rgGbTqCE7WFW5MezNTWG/dnhtbBuICzsd0WQPgpE4REBLv+UqChw==" crossorigin="anonymous"></script>
-    <script src="~/Scripts/alertifyjs/alertify.min.js"></script>
-    <link href="~/Scripts/alertifyjs/css/alertify.min.css" rel="stylesheet" />
-    <link href="~/Scripts/alertifyjs/css/themes/bootstrap.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Hind+Madurai:wght@500&display=swap" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/datepicker/1.0.10/datepicker.min.js" integrity="sha512-RCgrAvvoLpP7KVgTkTctrUdv7C6t7Un3p1iaoPr1++3pybCyCsCZZN7QEHMZTcJTmcJ7jzexTO+eFpHk4OCFAg==" crossorigin="anonymous"></script>
-</head>
-<body>
+
 <div class="container-fluid">
     <hr /><br />
     <div class="row justify-content-md-center align-items-center">
-        <div class="card text-center" style="width:50rem;">s
+        <div class="card text-center" style="width:50rem;">
             <div class="card-header">
                 <h3>Registrarse en el sistema</h3>
             </div>
@@ -125,11 +111,12 @@
 
 
             </div>
-            <div class="card-footer text-muted">
-                &copy; 2021 - Tienda Online
-            </div>
+            @*<div class="card-footer text-muted">
+                    &copy; 2021 - Tienda Online
+                </div>*@
         </div>
     </div>
+</div>
 
     @if (ViewBag.EmailExits != null && ViewBag.EmailExits == true)
     {
@@ -157,5 +144,3 @@
             $("#FechaNacimiento").mask("00/00/0000", { placeholder: "__/__/____" });
         });
     </script>
-    </body>
-    </html>

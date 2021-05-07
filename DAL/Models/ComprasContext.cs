@@ -12,5 +12,7 @@ namespace DAL.Models
         public DbSet<Role> roles { get; set; }
         public DbSet<Usuarios> usuarios { get; set; }
         public DbSet<UserInfo> UserInfo { get; set; }
+        public DbSet<CarritoCompras> CarritoCompras { get; set; }
+        public DbSet<Productos> Productos { get; set; }
     }
 }

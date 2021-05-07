@@ -6,6 +6,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static DAL.Models.Enums;
 
 namespace DAL.Models
 {
@@ -19,11 +20,5 @@ namespace DAL.Models
         public ICollection<Usuarios> Usuarios{ get; set; }
     }
 
-    public enum rol
-    {
-        [Description("Administrador")]
-        admin,
-        [Description("Usuario")]
-        user
-    }
+   
 }

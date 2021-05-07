@@ -1,5 +1,6 @@
 ﻿using BAL.IServices;
 using BAL.Services;
+using DAL.Helpers;
 using DAL.Models;
 using DAL.ViewModels;
 using SistemaVentas.Helpers;
@@ -36,7 +37,6 @@ namespace SistemaVentas.Controllers
 
         public ActionResult CreateOrUpdateUser()
         {
-            usuarioRepository.GetUsuarios();
             return View();
         }
         [HttpPost]
@@ -51,7 +51,7 @@ namespace SistemaVentas.Controllers
                 var DocuExist = await usuarioRepository.UserDocumentExits(modelo.documento);
                 if (!EmailExits && !UserNExits && !DocuExist)
                 {
-                    modelo.pass = UserHelper.EncriptarPassword(modelo.pass);
+                    modelo.pass = GeneralHelper.EncriptarPassword(modelo.pass);
                     var data = await usuarioRepository.CreateNewUser(modelo);
                     exito = data;
                 }
