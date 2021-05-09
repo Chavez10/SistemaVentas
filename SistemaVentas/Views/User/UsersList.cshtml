@@ -1,0 +1,59 @@
+﻿@using DAL.Models
+
+@{
+
+    ViewBag.Title = "UsersList";
+    Layout = "~/Views/Shared/_LayoutGeneral.cshtml";
+    List<Usuarios> Lista = ViewBag.lista != null ? ViewBag.lista : new List<Usuarios>();
+    List<UserInfo> ListaInfo = ViewBag.listaInfo != null ? ViewBag.listaInfo : new List<UserInfo>();
+
+}
+
+
+<div class="container-fluid">
+
+    <div class="row">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Dirección</th>
+                    <th>Fecha Nacimiento</th>
+                    <th>Telefono</th>
+                    <th>N° Documento</th>
+                    <th>Nombre de Usuario</th>
+                    <th>Correo Electronico</th>
+                    <th>ACCIONES</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (Usuarios user in Lista)
+                {
+                    foreach (UserInfo ui in ListaInfo)
+                    {
+                        <tr>
+                            <td>@user.idUser</td>
+                            <td>@ui.NombreUsuario</td>
+                            <td>@ui.ApellidoUsuario</td>
+                            <td>@ui.direccion</td>
+                            <td>@ui.FechaNacimiento</td>
+                            <td>@ui.telefono</td>
+                            <td>@ui.documento</td>
+                            <td>@user.UserName</td>
+                            <td>@user.email</td>
+                            <td>
+                                <a href="@Url.Action("UserEdit", "User", new {id= @user.idUser})" class="btn btn-info">Editar</a>
+                                
+                            </td>
+                        </tr>
+                    }
+                }
+
+            </tbody>
+        </table>
+    </div>
+
+</div>
+

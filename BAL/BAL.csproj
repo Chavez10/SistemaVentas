@@ -53,9 +53,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IServices\ILoginRepository.cs" />
+    <Compile Include="IServices\IUserInfos.cs" />
     <Compile Include="IServices\IUsuarioRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\LoginRepository.cs" />
+    <Compile Include="Services\UserInfosRepository.cs" />
     <Compile Include="Services\UsuarioRepository.cs" />
   </ItemGroup>
   <ItemGroup>

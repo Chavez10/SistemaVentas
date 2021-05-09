@@ -26,6 +26,12 @@ namespace BAL.Services
             return context.usuarios.ToList();
         }
 
+        public Usuarios GetUsuario(int? id)
+        {
+            Usuarios usuario = context.usuarios.Find(id);
+            return usuario;
+        }
+
         public async Task<bool> UserEmailExits(string Email)
         {
             return await context.usuarios.Where(x => x.email.ToLower().Equals(Email.ToLower())).AnyAsync();
@@ -116,5 +122,7 @@ namespace BAL.Services
             Dispose(true);
             GC.SuppressFinalize(this);
         }
+
+        
     }
 }

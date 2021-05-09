@@ -1,0 +1,150 @@
+﻿@using DAL.ViewModels
+@using DAL.Models
+@model Usuarios
+@{
+    ViewBag.Title = "UserEdit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="container-fluid">
+    <hr /><br />
+    <div class="row justify-content-md-center align-items-center">
+        <div class="card text-center" style="width:50rem;">
+            <div class="card-header">
+                <h3>Edición de Usuarios</h3>
+            </div>
+            <br />
+
+            <div class="card-body">
+
+                @using (Html.BeginForm("UserEdit", "User", FormMethod.Post))
+                {
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="form-group">
+                                        <div style="text-align:left;">
+                                            <label><b>Nombres:</b></label>
+                                            @*@Html.TextBoxFor(x => x.Nombre, new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(x => x.Nombre, null, new { @class = "text-danger" })*@
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div style="text-align:left;">
+                                            <label><b>Apellidos:</b></label>
+                                            @*@Html.TextBoxFor(x => x.Apellido, new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(x => x.Apellido, null, new { @class = "text-danger" })*@
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div style="text-align:left;">
+                                            <label><b>Fecha de Nacimiento:</b></label>
+                                            @*@Html.TextBoxFor(x => x.FechaNacimiento, new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(x => x.FechaNacimiento, null, new { @class = "text-danger" })*@
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div style="text-align:left;">
+                                            <label><b>Dirección:</b></label>
+                                            @*@Html.TextAreaFor(x => x.direccion, new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(x => x.direccion, null, new { @class = "text-danger" })*@
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div style="text-align:left;">
+                                            <label><b>DUI:</b></label>
+                                            @*@Html.TextBoxFor(x => x.documento, new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(x => x.documento, null, new { @class = "text-danger" })*@
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="form-group">
+                                        <div style="text-align:left;">
+                                            <label><b>Telefono:</b></label>
+                                            @*@Html.TextBoxFor(x => x.telefono, new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(x => x.telefono, null, new { @class = "text-danger" })*@
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div style="text-align:left;">
+                                            <label><b>Usuario:</b></label>
+                                            @Html.TextBoxFor(x => x.UserName, new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(x => x.UserName, null, new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div style="text-align:left;">
+                                            <label><b>Correo Electronico:</b></label>
+                                            @Html.TextBoxFor(x => x.email, new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(x => x.email, null, new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div style="text-align:left;">
+                                            <label><b>Contrañeña:</b></label>
+                                            @Html.TextBoxFor(x => x.pass, new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(x => x.pass, null, new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div style="text-align:left;">
+                                            <label><b>Confirmar Contraseña:</b></label>
+                                            @*@Html.PasswordFor(x => x.confirmPass, new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(x => x.confirmPass, null, new { @class = "text-danger" })*@
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <br /><br />
+                        <input type="submit" class="btn btn-primary" value="Registrarse" />
+                        <a href="/" class="btn btn-warning">Cancelar</a>
+                    </div>
+                }
+
+
+            </div>
+            @*<div class="card-footer text-muted">
+                    &copy; 2021 - Tienda Online
+                </div>*@
+        </div>
+    </div>
+</div>
+
+@if (ViewBag.EmailExits != null && ViewBag.EmailExits == true)
+{
+    <script>
+        alertify.error("¡ERROR!: El correo electrónico se encuentra registrado");
+    </script>
+}
+@if (ViewBag.UserNExits != null && ViewBag.UserNExits == true)
+{
+    <script>
+        alertify.error("¡ERROR!: El nombre de usuario se encuentra registrado");
+    </script>
+}e
+@if (ViewBag.DocuExist != null && ViewBag.DocuExist == true)
+{
+    <script>
+        alertify.error("¡ERROR!: El número de documento se encuentra registrado");
+    </script>
+}
+
+<script>
+    $(document).ready(function () {
+        $("#documento").mask("99999999-9", { placeholder: "________-_" });
+        $("#telefono").mask("9999-9999", { placeholder: "____-____" });
+        $("#FechaNacimiento").mask("00/00/0000", { placeholder: "__/__/____" });
+    });
+</script>
+
+

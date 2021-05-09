@@ -9,6 +9,8 @@ namespace DAL.ViewModels
 {
     public class AgregarUsuario
     {
+        public int idUser { get; set; }
+
         [Required(ErrorMessage ="Campo Usuario es requerido")]
         public string UserName { get; set; }
         [Required(ErrorMessage = "Campo Email es requerido")]

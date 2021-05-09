@@ -3,7 +3,6 @@ using BAL.Services;
 using DAL.Helpers;
 using DAL.Models;
 using DAL.ViewModels;
-using SistemaVentas.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,15 +16,18 @@ namespace SistemaVentas.Controllers
     {
 
         private IUsuarioRepository usuarioRepository;
+        private IUserInfos userInfos;
 
         public UserController()
         {
             this.usuarioRepository = new UsuarioRepository(new ComprasContext());
+            this.userInfos = new UserInfosRepository(new ComprasContext());
         }
 
-        public UserController(IUsuarioRepository usuarioRepository)
+        public UserController(IUsuarioRepository usuarioRepository, IUserInfos userInfos)
         {
             this.usuarioRepository = usuarioRepository;
+            this.userInfos = userInfos;
         }
 
         // GET: User
@@ -33,6 +35,32 @@ namespace SistemaVentas.Controllers
         {
             
             return View();
+        }
+
+        public ActionResult UsersList()
+        {
+
+            var UserInfo = userInfos.GetUserInfos();
+            var UsersList = usuarioRepository.GetUsuarios();
+            ViewBag.lista = UsersList.ToList();
+            ViewBag.listaInfo = UserInfo.ToList();
+            return View();
+        }
+
+        public ActionResult UserEdit(int? id)
+        {
+            if(id == null || id == 0)
+            {
+                return HttpNotFound();
+            }
+            var usuario = usuarioRepository.GetUsuario(id);
+            
+            if(usuario == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(usuario);
         }
 
         public ActionResult CreateOrUpdateUser()
