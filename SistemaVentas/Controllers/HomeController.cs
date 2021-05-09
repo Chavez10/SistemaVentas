@@ -38,5 +38,15 @@ namespace SistemaVentas.Controllers
 
             return View();
         }
+
+        public ActionResult IndexAdmin()
+        {
+            return View();
+        }
+
+        public ActionResult IndexVendedor()
+        {
+            return View();
+        }
     }
 }

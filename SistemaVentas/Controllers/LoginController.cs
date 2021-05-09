@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
+using static DAL.Models.Enums;
 
 namespace SistemaVentas.Controllers
 {
@@ -53,8 +54,19 @@ namespace SistemaVentas.Controllers
                     Session["UserID"] = obj.idUser.ToString();
                     Session["UserName"] = obj.UserName.ToString();
 
-                   return RedirectToAction("Index","Home");
 
+                    if(obj.roleId == (int)rol.admin)
+                    {
+                        return RedirectToAction("IndexAdmin", "Home");
+                    }
+                    else if (obj.roleId == (int)rol.vendedor)
+                    {
+                        return RedirectToAction("IndexCliente", "Home");
+                    }
+                    else
+                    {
+                        return RedirectToAction("Index", "Home");
+                    }                  
                 }
                 else
                 {
