@@ -32,5 +32,8 @@ namespace DAL.ViewModels
         [Required (ErrorMessage = "El Campo Confirmar Contraseña es requerido")]
         [Compare("pass", ErrorMessage = "Las contraseñas no coinciden")]
         public string confirmPass { get; set; }
+        public int? idUserInfo { get; set; }
+        public int? roleId { get; set; }
+        public string roleString { get; set; }
     }
 }

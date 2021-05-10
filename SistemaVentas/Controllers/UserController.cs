@@ -3,8 +3,10 @@ using BAL.Services;
 using DAL.Helpers;
 using DAL.Models;
 using DAL.ViewModels;
+using SistemaVentas.Models;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
@@ -39,12 +41,21 @@ namespace SistemaVentas.Controllers
 
         public ActionResult UsersList()
         {
-
-            var UserInfo = userInfos.GetUserInfos();
-            var UsersList = usuarioRepository.GetUsuarios();
-            ViewBag.lista = UsersList.ToList();
-            ViewBag.listaInfo = UserInfo.ToList();
             return View();
+        }
+
+        public async Task<ActionResult> GetUserList(DataTableJS request)
+        {            
+
+            var result = usuarioRepository.GetUsuariosLists(request);
+
+            return Json(new
+                {
+                    draw = request.Draw,
+                    recordsTotal = result.Count(),
+                    recordsFiltered = result.Count(),
+                    data = result
+                });
         }
 
         public ActionResult UserEdit(int? id)

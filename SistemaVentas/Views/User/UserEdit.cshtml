@@ -2,8 +2,8 @@
 @using DAL.Models
 @model Usuarios
 @{
-    ViewBag.Title = "UserEdit";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Editar Usuario";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
 
@@ -89,7 +89,7 @@
                                     <div class="form-group">
                                         <div style="text-align:left;">
                                             <label><b>Contrañeña:</b></label>
-                                            @Html.TextBoxFor(x => x.pass, new { @class = "form-control" })
+                                            @Html.PasswordFor(x => x.pass, new { @class = "form-control" })
                                             @Html.ValidationMessageFor(x => x.pass, null, new { @class = "text-danger" })
                                         </div>
                                     </div>
@@ -106,8 +106,8 @@
                     </div>
                     <div class="form-group">
                         <br /><br />
-                        <input type="submit" class="btn btn-primary" value="Registrarse" />
-                        <a href="/" class="btn btn-warning">Cancelar</a>
+                        <input type="submit" class="btn btn-primary" value="Guardar Cambios" />
+                        <a href="/User/UsersList" class="btn btn-warning">Cancelar</a>
                     </div>
                 }
 

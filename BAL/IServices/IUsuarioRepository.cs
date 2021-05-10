@@ -1,5 +1,6 @@
 ﻿using DAL.Models;
 using DAL.ViewModels;
+using SistemaVentas.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,5 +17,6 @@ namespace BAL.IServices
         Task<bool> UserEmailExits(string Email);
         Task<bool> UserNameExits(string name);
         Task<bool> UserDocumentExits(string dui);
+        IEnumerable<AgregarUsuario> GetUsuariosLists(DataTableJS request);
     }
 }

@@ -1,0 +1,97 @@
+﻿@using DAL.Models;
+@using SistemaVentas.Helpers;
+@model DAL.Models.Productos
+@{
+    ViewBag.Title = "CreateOrUpdateProducto";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="container-fluid">
+    <hr /><br />
+    <div class="row justify-content-md-center align-items-center">
+        <div class="card text-center" style="width:50rem;">
+            <div class="card-header">
+                <h3>Registrarse en el sistema</h3>
+            </div>
+            <br />
+
+            <div class="card-body">
+
+                @using (Html.BeginForm("CreateOrUpdateProducto", "Producto", FormMethod.Post))
+                {
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="form-group">
+                                        <div style="text-align:left;">
+                                            <label><b>Nombres:</b></label>
+                                            @Html.TextBoxFor(x => x.nombreProducto, new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(x => x.nombreProducto, null, new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div style="text-align:left;">
+                                            <label><b>Descripción:</b></label>
+                                            @Html.TextAreaFor(x => x.description, new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(x => x.description, null, new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div style="text-align:left;">
+                                            <label><b>Cantidad:</b></label>
+                                            @Html.TextBoxFor(x => x.cantidad, new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(x => x.cantidad, null, new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div style="text-align:left;">
+                                            <label><b>Precio:</b></label>
+                                            @Html.TextBoxFor(x => x.precio, new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(x => x.precio, null, new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div style="text-align:left;">
+                                            <label><b>Foto:</b></label>
+                                            @Html.TextBoxFor(x => x.photo, new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(x => x.photo, null, new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div style="text-align:left;">
+                                            <label><b>DUI:</b></label>
+                                            @Html.CustomEnumDropDownListForCategories(x => x.category, new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(x => x.photo, null, new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <br /><br />
+                        <input type="submit" class="btn btn-primary" value="Registrarse" />
+                        <a href="/Producto/Index" class="btn btn-warning">Cancelar</a>
+                    </div>
+                }
+
+
+            </div>
+
+            @if (ViewBag.Result != null && ViewBag.Result == false)
+            {
+                <script>
+                    alertify.error("¡ERROR!: Hubo un problema al crear el producto");
+                </script>
+            }
+            else if (ViewBag.Result != null && ViewBag.Result == false)
+            {
+                <script>
+                    alertify.success("¡Exito!: El producto se agrego correctamente");
+                </script>
+            }
+        </div>
+    </div>
+</div>
+
