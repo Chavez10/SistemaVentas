@@ -11,50 +11,29 @@
 <br />
 <div class="container-fluid">
     <div class="row">
-        <center>
-            <h2 class="card-title">Usuarios</h2>
-        </center>
-        <a href="#" class="btn btn-primary"> Crear Usuario</a>
-        <table class="table table-hover table-striped table-responsive text-center" id="TableUsuarios">
-            <thead>
-                <tr>
-                    <th>Nombre</th>
-                    <th>Apellido</th>
-                    <th>Dirección</th>
-                    <th>Fecha Nacimiento</th>
-                    <th>Telefono</th>
-                    <th>N° Documento</th>
-                    <th>Nombre de Usuario</th>
-                    <th>Correo Electronico</th>
-                    <th>Rol</th>
-                    <th>ACCIONES</th>
-                </tr>
-            </thead>
-            @*<tbody>
-                @foreach (Usuarios user in Lista)
-                {
-                    foreach (UserInfo ui in ListaInfo)
-                    {
-                        <tr>
-                            <td>@user.idUser</td>
-                            <td>@ui.NombreUsuario</td>
-                            <td>@ui.ApellidoUsuario</td>
-                            <td>@ui.direccion</td>
-                            <td>@ui.FechaNacimiento</td>
-                            <td>@ui.telefono</td>
-                            <td>@ui.documento</td>
-                            <td>@user.UserName</td>
-                            <td>@user.email</td>
-                            <td>
-                                <a href="@Url.Action("UserEdit", "User", new {id= @user.idUser})" class="btn btn-info">Editar</a>
-                                
-                            </td>
-                        </tr>
-                    }
-                }
-
-            </tbody>*@
-        </table>
+        <div>
+            <center>
+                <h2 class="card-title">Usuarios</h2>
+            </center>
+            <br />
+            <a href="/User/CreateOrUpdateUser" class="btn btn-primary"> Crear Usuario</a>
+            <table class="table table-hover table-striped table-responsive text-center" id="TableUsuarios">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>Dirección</th>
+                        <th>Fecha Nacimiento</th>
+                        <th>Telefono</th>
+                        <th>N° Documento</th>
+                        <th>Nombre de Usuario</th>
+                        <th>Correo Electronico</th>
+                        <th>Rol</th>
+                        <th>ACCIONES</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
     </div>
 
 </div>
