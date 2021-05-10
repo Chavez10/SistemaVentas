@@ -19,17 +19,21 @@ namespace SistemaVentas.Controllers
 
         private IUsuarioRepository usuarioRepository;
         private IUserInfos userInfos;
+        private IRoleRepository roleRepository;
+        private ComprasContext db_ = new ComprasContext();
 
         public UserController()
         {
             this.usuarioRepository = new UsuarioRepository(new ComprasContext());
             this.userInfos = new UserInfosRepository(new ComprasContext());
+            this.roleRepository = new RoleRepository(new ComprasContext());
         }
 
-        public UserController(IUsuarioRepository usuarioRepository, IUserInfos userInfos)
+        public UserController(IUsuarioRepository usuarioRepository, IUserInfos userInfos, IRoleRepository role)
         {
             this.usuarioRepository = usuarioRepository;
             this.userInfos = userInfos;
+            this.roleRepository = role;
         }
 
         // GET: User
@@ -64,14 +68,59 @@ namespace SistemaVentas.Controllers
             {
                 return HttpNotFound();
             }
-            var usuario = usuarioRepository.GetUsuario(id);
-            
-            if(usuario == null)
-            {
-                return HttpNotFound();
-            }
+            ActualizarUsuario modelo = new ActualizarUsuario();
 
-            return View(usuario);
+            using (ComprasContext db = new ComprasContext())
+            {
+                var usu = db.usuarios.Find(id);
+                var info = db.UserInfo.Find(id);
+
+                modelo.Nombre = info.NombreUsuario;
+                modelo.Apellido = info.ApellidoUsuario;
+                modelo.direccion = info.direccion;
+                modelo.documento = info.documento;
+                modelo.telefono = info.telefono;
+                modelo.FechaNacimiento = info.FechaNacimiento;
+
+                modelo.idUser = usu.idUser;
+                modelo.UserName = usu.UserName;
+                modelo.email = usu.email;
+                modelo.pass = usu.pass;
+            }
+            var roles = (from r in db_.roles select new {
+                id = r.IdRol,
+                rol = r.NombreRol
+            }) ;
+            ViewBag.IdRol = new SelectList(roles, "id", "rol");
+            return View(modelo);
+        }
+
+
+        [HttpPost]
+        public async Task<ActionResult> UserEdit(FormCollection fr, ActualizarUsuario modelo)
+        {
+            bool exito = false;
+            var rol = fr["IdRol"];
+            int idRol = int.Parse(rol);
+            modelo.rol = idRol;
+            if (ModelState.IsValid)
+            {
+                modelo.pass = GeneralHelper.EncriptarPassword(modelo.pass);
+                var data = await usuarioRepository.EditUser(modelo);
+                exito = data;
+
+                if (exito == true)
+                    return RedirectToAction("UsersList", "User");
+            }
+            var roles = (from r in db_.roles
+                         select new
+                         {
+                             id = r.IdRol,
+                             rol = r.NombreRol
+                         });
+            ViewBag.IdRol = new SelectList(roles, "id", "rol");
+
+            return View(modelo);
         }
 
         public ActionResult CreateOrUpdateUser()

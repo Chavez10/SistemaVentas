@@ -57,11 +57,13 @@
   <ItemGroup>
     <Compile Include="IServices\ILoginRepository.cs" />
     <Compile Include="IServices\IProductosRepository.cs" />
+    <Compile Include="IServices\IRoleRepository.cs" />
     <Compile Include="IServices\IUserInfos.cs" />
     <Compile Include="IServices\IUsuarioRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\LoginRepository.cs" />
     <Compile Include="Services\ProductosRepository.cs" />
+    <Compile Include="Services\RoleRepository.cs" />
     <Compile Include="Services\UserInfosRepository.cs" />
     <Compile Include="Services\UsuarioRepository.cs" />
   </ItemGroup>
