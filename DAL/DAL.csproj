@@ -69,6 +69,10 @@
     <Compile Include="Migrations\202105070407521_update-Model.designer.cs">
       <DependentUpon>202105070407521_update-Model.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202105100312336_model_userinfo.cs" />
+    <Compile Include="Migrations\202105100312336_model_userinfo.designer.cs">
+      <DependentUpon>202105100312336_model_userinfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\CarritoCompras.cs" />
     <Compile Include="Models\ComprasContext.cs" />
@@ -96,6 +100,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202105070407521_update-Model.resx">
       <DependentUpon>202105070407521_update-Model.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202105100312336_model_userinfo.resx">
+      <DependentUpon>202105100312336_model_userinfo.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

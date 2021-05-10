@@ -1,5 +1,4 @@
 ﻿using DAL.Models;
-using DAL.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,9 +7,8 @@ using System.Threading.Tasks;
 
 namespace BAL.IServices
 {
-    public interface IUserInfos : IDisposable
+    public interface IRoleRepository : IDisposable
     {
-        IEnumerable<UserInfo> GetUserInfos();
-        UserInfo GetUserInfo(int? id);
+        IEnumerable<Role> GetRoles();
     }
 }

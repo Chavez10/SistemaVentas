@@ -24,10 +24,10 @@ namespace BAL.Services
             return context.UserInfo.ToList();
         }
 
-        public IList<UserInfo> GetUserInfo(int? id)
+        public UserInfo GetUserInfo(int? id)
         {
             UserInfo usuario = context.UserInfo.Find(id);
-            return (IList<UserInfo>)usuario;
+            return usuario;
         }
 
 

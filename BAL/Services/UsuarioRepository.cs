@@ -87,11 +87,70 @@ namespace BAL.Services
 
         }
 
+        public async Task<bool> EditUser(AgregarUsuario modelo)
+        {
+            bool success;
+
+            try
+            {
+                var usu = new Usuarios()
+                {
+                    UserName = modelo.UserName,
+                    email = modelo.email,
+                    pass = modelo.pass,
+                    roleId = (int)rol.user
+                };
+                var _us = await EditUsu(usu);
+
+                var info = new UserInfo()
+                {
+                    NombreUsuario = modelo.Nombre,
+                    ApellidoUsuario = modelo.Apellido,
+                    FechaNacimiento = modelo.FechaNacimiento,
+                    direccion = modelo.direccion,
+                    documento = modelo.documento,
+                    telefono = modelo.telefono,
+                    idUser = _us.idUser
+                };
+                var _info = await EditInfo(info);
+
+                if (_info.IdUserInformation > 0 && _us.idUser > 0)
+                {
+                    success = true;
+                }
+                else
+                {
+                    success = false;
+                }
+            }
+            catch (Exception)
+            {
+
+                success = false;
+            }
+
+            return success;
+        }
+
         private async Task<Usuarios> CreateUser(Usuarios model)
         {
             context.usuarios.Add(model);
             await context.SaveChangesAsync();
 
+            return model;
+        }
+
+        private async Task<Usuarios> EditUsu(Usuarios model)
+        {
+            context.Entry(model).State = EntityState.Modified;
+            await context.SaveChangesAsync();
+            return model;
+        }
+
+        private async Task<UserInfo> EditInfo(UserInfo model)
+        {
+            context.Entry(model).State = EntityState.Modified;
+            await context.SaveChangesAsync();
             return model;
         }
 

@@ -1,4 +1,5 @@
 ﻿using System;
+using DAL.Models;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -10,6 +11,9 @@ namespace DAL.ViewModels
     public class AgregarUsuario
     {
         public int idUser { get; set; }
+        public Usuarios usuario { get; set; }
+        public UserInfo userInfo { get; set; }
+        public Role rol { get; set; }
 
         [Required(ErrorMessage ="Campo Usuario es requerido")]
         public string UserName { get; set; }
@@ -32,5 +36,7 @@ namespace DAL.ViewModels
         [Required (ErrorMessage = "El Campo Confirmar Contraseña es requerido")]
         [Compare("pass", ErrorMessage = "Las contraseñas no coinciden")]
         public string confirmPass { get; set; }
+
+
     }
 }
