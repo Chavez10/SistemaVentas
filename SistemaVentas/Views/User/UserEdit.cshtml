@@ -1,5 +1,5 @@
 ﻿@using DAL.ViewModels
-@model AgregarUsuario
+@model ActualizarUsuario
 @{
     ViewBag.Title = "UserEdit";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -19,7 +19,7 @@
 
                 @using (Html.BeginForm("UserEdit", "User", FormMethod.Post))
                 {
-                    @Html.HiddenFor(x => x.usuario.idUser)
+                    @Html.HiddenFor(x => x.idUser)
                     <div class="row">
                         <div class="col-sm-6">
                             <div class="card">
@@ -27,36 +27,36 @@
                                     <div class="form-group">
                                         <div style="text-align:left;">
                                             <label><b>Nombres:</b></label>
-                                            @Html.TextBoxFor(x => x.userInfo.NombreUsuario, new { @class = "form-control" })
-                                            @Html.ValidationMessageFor(x => x.userInfo.NombreUsuario, null, new { @class = "text-danger" })
+                                            @Html.TextBoxFor(x => x.Nombre, new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(x => x.Nombre, null, new { @class = "text-danger" })
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <div style="text-align:left;">
                                             <label><b>Apellidos:</b></label>
-                                            @Html.TextBoxFor(x => x.userInfo.ApellidoUsuario, new { @class = "form-control" })
-                                            @Html.ValidationMessageFor(x => x.userInfo.ApellidoUsuario, null, new { @class = "text-danger" })
+                                            @Html.TextBoxFor(x => x.Apellido, new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(x => x.Apellido, null, new { @class = "text-danger" })
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <div style="text-align:left;">
                                             <label><b>Fecha de Nacimiento:</b></label>
-                                            @Html.TextBoxFor(x => x.userInfo.FechaNacimiento, new { @class = "form-control" })
-                                            @Html.ValidationMessageFor(x => x.userInfo.FechaNacimiento, null, new { @class = "text-danger" })
+                                            @Html.TextBoxFor(x => x.FechaNacimiento, new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(x => x.FechaNacimiento, null, new { @class = "text-danger" })
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <div style="text-align:left;">
                                             <label><b>Dirección:</b></label>
-                                            @Html.TextAreaFor(x => x.userInfo.direccion, new { @class = "form-control" })
-                                            @Html.ValidationMessageFor(x => x.userInfo.direccion, null, new { @class = "text-danger" })
+                                            @Html.TextAreaFor(x => x.direccion, new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(x => x.direccion, null, new { @class = "text-danger" })
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <div style="text-align:left;">
                                             <label><b>DUI:</b></label>
-                                            @Html.TextBoxFor(x => x.userInfo.documento, new { @class = "form-control" })
-                                            @Html.ValidationMessageFor(x => x.userInfo.documento, null, new { @class = "text-danger" })
+                                            @Html.TextBoxFor(x => x.documento, new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(x => x.documento, null, new { @class = "text-danger" })
                                         </div>
                                     </div>
                                 </div>
@@ -68,35 +68,35 @@
                                     <div class="form-group">
                                         <div style="text-align:left;">
                                             <label><b>Telefono:</b></label>
-                                            @Html.TextBoxFor(x => x.userInfo.telefono, new { @class = "form-control" })
-                                            @Html.ValidationMessageFor(x => x.userInfo.telefono, null, new { @class = "text-danger" })
+                                            @Html.TextBoxFor(x => x.telefono, new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(x => x.telefono, null, new { @class = "text-danger" })
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <div style="text-align:left;">
                                             <label><b>Usuario:</b></label>
-                                            @Html.TextBoxFor(x => x.usuario.UserName, new { @class = "form-control" })
-                                            @Html.ValidationMessageFor(x => x.usuario.UserName, null, new { @class = "text-danger" })
+                                            @Html.TextBoxFor(x => x.UserName, new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(x => x.UserName, null, new { @class = "text-danger" })
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <div style="text-align:left;">
                                             <label><b>Correo Electronico:</b></label>
-                                            @Html.TextBoxFor(x => x.usuario.email, new { @class = "form-control" })
-                                            @Html.ValidationMessageFor(x => x.usuario.email, null, new { @class = "text-danger" })
+                                            @Html.TextBoxFor(x => x.email, new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(x => x.email, null, new { @class = "text-danger" })
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <div style="text-align:left;">
                                             <label><b>Contraseña:</b></label>
-                                            @Html.TextBoxFor(x => x.usuario.pass, new { @class = "form-control" })
-                                            @Html.ValidationMessageFor(x => x.usuario.pass, null, new { @class = "text-danger" })
+                                            @Html.TextBoxFor(x => x.pass, new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(x => x.pass, null, new { @class = "text-danger" })
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <div style="text-align: left;">
                                             <label><b>Rol de Usuario:</b></label>
-                                            @*@Html.DropDownListFor(x => x.usuario.roleId,(IEnumerable<SelectListItem>)ViewBag.roleId, htmlAttributes: new { @class = "form-control" })*@
+                                            @Html.DropDownList("IdRol", (SelectList)ViewBag.IdRol, "Seleccione un rol", htmlAttributes: new { @class = "form-control" })
                                         </div>
                                     </div>
                                 </div>

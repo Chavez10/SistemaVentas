@@ -18,6 +18,7 @@ namespace SistemaVentas.Controllers
         private IUsuarioRepository usuarioRepository;
         private IUserInfos userInfos;
         private IRoleRepository roleRepository;
+        private ComprasContext db_ = new ComprasContext();
 
         public UserController()
         {
@@ -56,54 +57,57 @@ namespace SistemaVentas.Controllers
             {
                 return HttpNotFound();
             }
-            Usuarios usuario = usuarioRepository.GetUsuario(id);
-            UserInfo userInfo = userInfos.GetUserInfo(id);
-            AgregarUsuario modelos = new AgregarUsuario();
-            
-            if(usuario == null && userInfo == null)
+            ActualizarUsuario modelo = new ActualizarUsuario();
+
+            using (ComprasContext db = new ComprasContext())
             {
-                return HttpNotFound();
+                var usu = db.usuarios.Find(id);
+                var info = db.UserInfo.Find(id);
+
+                modelo.Nombre = info.NombreUsuario;
+                modelo.Apellido = info.ApellidoUsuario;
+                modelo.direccion = info.direccion;
+                modelo.documento = info.documento;
+                modelo.telefono = info.telefono;
+                modelo.FechaNacimiento = info.FechaNacimiento;
+
+                modelo.idUser = usu.idUser;
+                modelo.UserName = usu.UserName;
+                modelo.email = usu.email;
+                modelo.pass = usu.pass;
             }
-
-            modelos.usuario = usuario;
-            modelos.userInfo = userInfo;
-            //IEnumerable<SelectListItem> items = roleRepository.GetRoles().Select(r => new SelectListItem
-            //{
-            //    Value = r.IdRol.ToString(),
-            //    Text = r.NombreRol.ToString(),
-            //    Selected = usuario.roleId.Equals(id)
-            //});
-
-            return View(modelos);
+            var roles = (from r in db_.roles select new {
+                id = r.IdRol,
+                rol = r.NombreRol
+            }) ;
+            ViewBag.IdRol = new SelectList(roles, "id", "rol");
+            return View(modelo);
         }
 
 
         [HttpPost]
-        public async Task<ActionResult> UserEdit(AgregarUsuario modelo)
+        public async Task<ActionResult> UserEdit(FormCollection fr, ActualizarUsuario modelo)
         {
             bool exito = false;
-
+            var rol = fr["IdRol"];
+            int idRol = int.Parse(rol);
+            modelo.rol = idRol;
             if (ModelState.IsValid)
             {
-                var EmailExits = await usuarioRepository.UserEmailExits(modelo.email);
-                var UserNExits = await usuarioRepository.UserNameExits(modelo.UserName);
-                var DocuExist = await usuarioRepository.UserDocumentExits(modelo.documento);
-                if (!EmailExits && !UserNExits && !DocuExist)
-                {
-                    modelo.pass = GeneralHelper.EncriptarPassword(modelo.pass);
-                    var data = await usuarioRepository.EditUser(modelo);
-                    exito = data;
-                }
-                if (EmailExits)
-                    ViewBag.EmailExits = true;
-                if (UserNExits)
-                    ViewBag.UserNExits = true;
-                if (DocuExist)
-                    ViewBag.DocuExist = true;
+                modelo.pass = GeneralHelper.EncriptarPassword(modelo.pass);
+                var data = await usuarioRepository.EditUser(modelo);
+                exito = data;
 
                 if (exito == true)
                     return RedirectToAction("UsersList", "User");
             }
+            var roles = (from r in db_.roles
+                         select new
+                         {
+                             id = r.IdRol,
+                             rol = r.NombreRol
+                         });
+            ViewBag.IdRol = new SelectList(roles, "id", "rol");
 
             return View(modelo);
         }
