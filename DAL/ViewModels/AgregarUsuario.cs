@@ -63,4 +63,10 @@ namespace DAL.ViewModels
         [Required(ErrorMessage = "Campo Documento es requerido")]
         public string documento { get; set; }
     }
+
+    public class RolesDetalle
+    {
+        public string rolName { get; set; }
+        public int totalUsers { get; set; }
+    }
 }

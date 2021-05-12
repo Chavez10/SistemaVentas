@@ -34,9 +34,9 @@ namespace DAL.Models
             mascota = 5,
             [Description("Ropa/Calzado")]
             ropa_calzado = 6,
-            [Description("Joyerìa")]
+            [Description("Joyería")]
             joyeria = 7,
-            [Description("Jardinerìa")]
+            [Description("Jardinería")]
             jardineria = 8,
             [Description("Herramientas")]
             herramientas = 9,

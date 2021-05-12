@@ -87,7 +87,8 @@ namespace SistemaVentas.Controllers
             if (id > 0)
             {
                 var model = context.Productos.Find(id);
-                return View(model);            
+                ViewBag.IsEdit = true;
+                return View(model);                
             }
 
             var model_ = new Productos();
@@ -101,12 +102,29 @@ namespace SistemaVentas.Controllers
 
             if (ModelState.IsValid)
             {
+                var isEdit = model.IdProducto > 0 ? true : false;
                 var result = await ProductoRepo.CreateOrUpdateProducto(model);
-                ViewBag.Result = result;               
+                ViewBag.Result = result;
+                ViewBag.IsEdit = isEdit;
                 return View(model);
             }
 
             return View(model);
+        }
+
+        public async Task<ActionResult> Categorias()
+        {
+            var lista = await ProductoRepo.getCategoriasDetalle();
+            ViewBag.listaCat = lista;
+
+            return View();
+        }
+
+        public async Task<ActionResult> DeleteProducto(int IdProducto)
+        {
+            var respuesta = await ProductoRepo.DeleteProductos(IdProducto);
+
+            return Json(new { respuesta });
         }
 
     }

@@ -87,6 +87,7 @@
     <Compile Include="Models\Usuarios.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\AgregarUsuario.cs" />
+    <Compile Include="ViewModels\ProductosViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

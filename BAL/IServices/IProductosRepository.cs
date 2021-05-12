@@ -1,4 +1,5 @@
 ﻿using DAL.Models;
+using DAL.ViewModels;
 using SistemaVentas.Models;
 using System;
 using System.Collections.Generic;
@@ -13,5 +14,8 @@ namespace BAL.IServices
         IEnumerable<Productos> GetProductos();
         IEnumerable<Productos> ObtenerProductos(DataTableJS request);
         Task<bool> CreateOrUpdateProducto(Productos model);
+        Task<List<CategoriasDetalle>> getCategoriasDetalle();
+        Task<bool> DeleteProductos(int Id);
+
     }
 }

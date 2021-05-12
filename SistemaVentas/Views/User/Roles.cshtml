@@ -1,0 +1,35 @@
+﻿@using DAL.ViewModels;
+@{
+    ViewBag.Title = "Roles";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    List<RolesDetalle> lista = ViewBag.listaRoles != null ? ViewBag.listaRoles : new List<RolesDetalle>();
+}
+
+<br />
+<center>
+    <h2 class="card-title">Roles</h2>
+</center>
+<br />
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-responsive-lg table-hover table-striped text-center">
+                <thead>
+                    <tr>
+                        <th>Rol</th>
+                        <th>Cantidad de Usuario</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var li in lista)
+                    {
+                        <tr>
+                            <td>@li.rolName</td>
+                            <td>@li.totalUsers</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

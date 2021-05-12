@@ -19,5 +19,6 @@ namespace BAL.IServices
         Task<bool> UserNameExits(string name);
         Task<bool> UserDocumentExits(string dui);
         IEnumerable<AgregarUsuario> GetUsuariosLists(DataTableJS request);
+        List<RolesDetalle> getRolesDetalles();
     }
 }

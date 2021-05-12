@@ -1,0 +1,34 @@
+﻿@using DAL.ViewModels;
+@{
+    ViewBag.Title = "Categorias";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    List<CategoriasDetalle> lista = ViewBag.listaCat != null ? ViewBag.listaCat : new List<CategoriasDetalle>();
+}
+<br />
+<center>
+    <h2 class="card-title">Categorías</h2>
+</center>
+<br />
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-responsive-lg table-hover table-striped text-center">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Cantidad de Productos</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var li in lista)
+                    {
+                        <tr>
+                            <td>@li.NombreCategoria</td>
+                            <td>@li.Existencia</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
