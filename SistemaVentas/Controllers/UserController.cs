@@ -165,5 +165,12 @@ namespace SistemaVentas.Controllers
             return View(modelo);
 
         }
+
+        public async Task<ActionResult> Roles()
+        {
+            var lista = usuarioRepository.getRolesDetalles();
+            ViewBag.listaRoles = lista;
+            return View();
+        }
     }
 }

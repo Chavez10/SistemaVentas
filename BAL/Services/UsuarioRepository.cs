@@ -29,6 +29,21 @@ namespace BAL.Services
             return context.usuarios.ToList();
         }
 
+        public List<RolesDetalle> getRolesDetalles()
+        {
+            var lista = new List<RolesDetalle>();
+
+            foreach (var role in Enum.GetValues(typeof(rol)))
+            {
+                var nombre = GeneralHelper.GetDescriptionFromEnumValue((rol)role);
+                var total = context.usuarios.Where(x=>x.roleId == (int)role).Count();
+
+                lista.Add(new RolesDetalle { rolName = nombre, totalUsers = total });
+            }
+
+            return lista;
+        }
+
         public IEnumerable<AgregarUsuario> GetUsuariosLists(DataTableJS request)
         {
             var UserInfo = context.UserInfo.ToList();

@@ -1,11 +1,14 @@
 ﻿using BAL.IServices;
+using DAL.Helpers;
 using DAL.Models;
+using DAL.ViewModels;
 using SistemaVentas.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static DAL.Models.Enums;
 
 namespace BAL.Services
 {
@@ -46,6 +49,21 @@ namespace BAL.Services
             return success;
         }
 
+        public async Task<List<CategoriasDetalle>> getCategoriasDetalle()
+        {
+            var lista = new List<CategoriasDetalle>();
+
+            foreach(var cat in Enum.GetValues(typeof(category)))
+            {
+                var nombre = GeneralHelper.GetDescriptionFromEnumValue((category)cat);
+                var cantidad = context.Productos.Where(x => x.category == (category)cat).Count();
+
+                lista.Add(new CategoriasDetalle { NombreCategoria = nombre, Existencia = cantidad });
+            }
+
+            return lista;
+        }
+
         public IEnumerable<Productos> ObtenerProductos(DataTableJS request)
         {
             var productos = context.Productos.ToList();
@@ -60,6 +78,22 @@ namespace BAL.Services
             var result = productos.OrderByDescending(c => c.nombreProducto).Skip(request.Start).Take(request.Length).ToList();
 
             return result;
+        }
+
+        public async Task<bool> DeleteProductos(int Id)
+        {
+            bool success = false;
+            try
+            {
+                var model = context.Productos.Find(Id);
+                context.Productos.Remove(model);
+                await context.SaveChangesAsync();
+
+                success = true;
+            }
+            catch { }
+
+            return success;
         }
 
         private bool disposed = false;

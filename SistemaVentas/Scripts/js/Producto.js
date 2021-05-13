@@ -41,9 +41,8 @@
             {
                 "orderable": false,
                 "render": function (data, type, row) {
-
-                    return '<center><a href="/Producto/CreateOrUpdateProducto?id=' + row.idProducto+'" style="width:120px" class="btn btn-info"><i class="bi bi-pencil"></i> Editar</a>' +
-                        '<a href="#" class="btn btn-danger" style="width:120px"><i class="bi bi-trash"></i> Eliminar</a></center>';
+                    return '<center><a href="/Producto/CreateOrUpdateProducto?id=' + row.idProducto + '" style="width:120px" class="btn btn-info"><i class="bi bi-pencil"></i> Editar</a>' +
+                        '<a href="#" onclick="EliminarProducto(' + row.idProducto + ')" class="btn btn-danger" style="width:120px"><i class="bi bi-trash"></i> Eliminar</a></center>';
                 }
             }
         ],
@@ -118,3 +117,22 @@
         }
     });
 });
+
+function EliminarProducto(idProd)
+{
+    alertify.confirm('Confirmación', '¿Desea eliminar el usuario?',
+        function () { DeleteUser(idProd) }
+        , function () { alertify.error('Cancel') });
+}
+
+function DeleteUser(idProd)
+{
+    $.post("/Producto/DeleteProducto", { IdProducto: idProd }, function (response) {
+        if (response.IsSuccess) {
+            table.ajax.reload();
+            alertify.success("El usuario se elimino correctamente");
+        } else {
+            alertify.error("Hubo un problema al eliminar el usuario")
+        }
+    });
+}
