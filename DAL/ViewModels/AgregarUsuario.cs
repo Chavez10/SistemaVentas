@@ -11,6 +11,7 @@ namespace DAL.ViewModels
     public class AgregarUsuario
     {
         public int idUser { get; set; }
+        
         public int rol { get; set; }
         [Required(ErrorMessage ="Campo Usuario es requerido")]
         public string UserName { get; set; }
@@ -43,6 +44,7 @@ namespace DAL.ViewModels
     public class ActualizarUsuario
     {
         public int idUser { get; set; }
+        public List<Role> selectRoles { get; set; }
         public int rol { get; set; }
         [Required(ErrorMessage = "Campo Usuario es requerido")]
         public string UserName { get; set; }

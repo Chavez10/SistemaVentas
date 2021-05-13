@@ -101,6 +101,28 @@ namespace BAL.Services
             return usuario;
         }
 
+        public async Task<bool> UserDelete(int? id)
+        {
+            try
+            {
+                UserInfo info = context.UserInfo.Find(id);
+                Usuarios usu = context.usuarios.Find(id);
+
+                context.UserInfo.Remove(info);
+                await context.SaveChangesAsync();
+
+                context.usuarios.Remove(usu);
+                await context.SaveChangesAsync();
+
+                return true;
+
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
         public async Task<bool> UserEmailExits(string Email)
         {
             return await context.usuarios.Where(x => x.email.ToLower().Equals(Email.ToLower())).AnyAsync();

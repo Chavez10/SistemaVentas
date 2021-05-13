@@ -89,11 +89,8 @@ namespace SistemaVentas.Controllers
                 modelo.rol = usu.roleId;
                 
             }
-            var roles = (from r in db_.roles select new {
-                id = r.IdRol,
-                rol = r.NombreRol
-            });
 
+            ViewBag.roles = roleRepository.GetRoles();
             
             return View(modelo);
         }
@@ -101,9 +98,9 @@ namespace SistemaVentas.Controllers
 
         [HttpPost]
         public async Task<ActionResult> UserEdit(FormCollection fr, ActualizarUsuario modelo)
-        {
-            bool exito = false;
-            var rol = fr["IdRol"];
+            {
+            bool exito;
+            var rol = fr["rol"];
             int idRol = int.Parse(rol);
             modelo.rol = idRol;
             if (ModelState.IsValid)
@@ -115,17 +112,8 @@ namespace SistemaVentas.Controllers
                 if (exito == true)
                     return RedirectToAction("UsersList", "User");
             }
-            var roles = (from r in db_.roles
-                         select new
-                         {
-                             id = r.IdRol,
-                             rol = r.NombreRol
-                         });
-            var selectRol = (from s in db_.usuarios
-                             where s.idUser == idRol
-                             select s.roleId);
 
-            ViewBag.IdRol = new SelectList(roles, "id", "rol", selectRol);
+            ViewBag.roles = roleRepository.GetRoles();
             return View(modelo);
         }
 
@@ -164,6 +152,20 @@ namespace SistemaVentas.Controllers
             
             return View(modelo);
 
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> UserDelete(int? id)
+        {
+            bool test;
+
+            var data = await usuarioRepository.UserDelete(id);
+            test = data;
+            if (!test)
+            {
+                return Content("0");
+            }
+            return Content("1");
         }
 
         public async Task<ActionResult> Roles()

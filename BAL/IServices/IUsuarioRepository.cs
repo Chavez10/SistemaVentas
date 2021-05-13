@@ -15,6 +15,7 @@ namespace BAL.IServices
         Usuarios GetUsuario(int? id);
         Task<bool> CreateNewUser(AgregarUsuario modelo);
         Task<bool> EditUser(ActualizarUsuario modelo);
+        Task<bool> UserDelete(int? id);
         Task<bool> UserEmailExits(string Email);
         Task<bool> UserNameExits(string name);
         Task<bool> UserDocumentExits(string dui);

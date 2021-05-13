@@ -68,7 +68,7 @@
                 "render": function (data, type, row) {
 
                     return '<center><a href="/User/UserEdit?id=' + row.idUser + '" style="width:120px" class="btn btn-info"><i class="bi bi-pencil"></i> Editar</a>' +
-                           '<a href="#" class="btn btn-danger" style="width:120px"><i class="bi bi-trash"></i> Eliminar</a></center>';
+                        '<button type="button" onclick="jsDelete(' + row.idUser + ')" name="delete" class="btn btn-danger" style="width:120px"/><i class="bi bi-trash"></i> Eliminar</button></center>';
                 }
             }
         ],
@@ -86,3 +86,17 @@
         }
     });
 });
+
+function jsDelete(idUser) {
+    var ROOT = '/User/UserDelete/' + idUser;
+    if (confirm("¿Desea eliminar este registro?")) {
+        url = ROOT;
+        $.post(url, function(info){
+            if (info == "1") {
+                document.location.href = "/User/UsersList";
+            } else {
+                alert("Ocurrio un error, no se puede eliminar el registro.");
+            }
+        });
+    }
+}
