@@ -96,7 +96,7 @@
                                     <div class="form-group">
                                         <div style="text-align: left;">
                                             <label><b>Rol de Usuario:</b></label>
-                                            @Html.DropDownList("IdRol", (SelectList)ViewBag.IdRol, "Seleccione un rol", htmlAttributes: new { @class = "form-control" })
+                                            @Html.DropDownListFor(x => x.rol, new SelectList(Model.), htmlAttributes: new { @class = "form-control" })
                                         </div>
                                     </div>
                                 </div>

@@ -64,7 +64,7 @@ namespace SistemaVentas.Controllers
 
         public ActionResult UserEdit(int? id)
         {
-            if(id == null || id == 0)
+            if (id == null || id == 0)
             {
                 return HttpNotFound();
             }
@@ -86,12 +86,15 @@ namespace SistemaVentas.Controllers
                 modelo.UserName = usu.UserName;
                 modelo.email = usu.email;
                 modelo.pass = usu.pass;
+                modelo.rol = usu.roleId;
+                
             }
             var roles = (from r in db_.roles select new {
                 id = r.IdRol,
                 rol = r.NombreRol
-            }) ;
-            ViewBag.IdRol = new SelectList(roles, "id", "rol");
+            });
+
+            
             return View(modelo);
         }
 
@@ -118,8 +121,11 @@ namespace SistemaVentas.Controllers
                              id = r.IdRol,
                              rol = r.NombreRol
                          });
-            ViewBag.IdRol = new SelectList(roles, "id", "rol");
+            var selectRol = (from s in db_.usuarios
+                             where s.idUser == idRol
+                             select s.roleId);
 
+            ViewBag.IdRol = new SelectList(roles, "id", "rol", selectRol);
             return View(modelo);
         }
 
