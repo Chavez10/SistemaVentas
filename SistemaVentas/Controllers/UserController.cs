@@ -75,12 +75,12 @@ namespace SistemaVentas.Controllers
                 var usu = db.usuarios.Find(id);
                 var info = db.UserInfo.Where(x=>x.idUser == id).FirstOrDefault();
 
-                modelo.Nombre = info.NombreUsuario != null ? info.NombreUsuario : string.Empty;
-                modelo.Apellido = info.ApellidoUsuario != null ? info.ApellidoUsuario : string.Empty;
-                modelo.direccion = info.direccion != null ? info.direccion : string.Empty;
-                modelo.documento = info.documento != null ? info.documento : string.Empty;
-                modelo.telefono = info.telefono != null ? info.telefono : string.Empty;
-                modelo.FechaNacimiento = info.FechaNacimiento != null ? info.FechaNacimiento : string.Empty;
+                modelo.Nombre = info != null ? info.NombreUsuario : string.Empty;
+                modelo.Apellido = info != null ? info.ApellidoUsuario : string.Empty;
+                modelo.direccion = info != null ? info.direccion : string.Empty;
+                modelo.documento = info != null ? info.documento : string.Empty;
+                modelo.telefono = info != null ? info.telefono : string.Empty;
+                modelo.FechaNacimiento = info != null ? info.FechaNacimiento : string.Empty;
 
                 modelo.idUser = usu.idUser;
                 modelo.UserName = usu.UserName;
