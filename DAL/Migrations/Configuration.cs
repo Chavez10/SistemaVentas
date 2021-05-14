@@ -42,6 +42,8 @@
                 pass = Helpers.GeneralHelper.EncriptarPassword("root"),
                 roleId = (int)rol.admin
             };
+            context.usuarios.Add(newUser);
+            context.SaveChanges();
         }
     }
 }

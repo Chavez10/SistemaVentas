@@ -2,7 +2,14 @@
 @model AgregarUsuario
 @{
     ViewBag.Title = "Registro Usuario";
-    Layout = "~/Views/Shared/_LayoutGeneral.cshtml"; ;
+    if(Session["UserName"] != null)
+    {
+        Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    }
+    else
+    {
+        Layout = "~/Views/Shared/_LayoutGeneral.cshtml";
+    }
 }
 
 <div class="container-fluid">
