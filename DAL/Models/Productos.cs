@@ -19,7 +19,7 @@ namespace DAL.Models
         public string photo { get; set; }
         public int cantidad { get; set; }
         public double precio { get; set; }
-
+        public  int? IdVendedor { get; set; }
         [ForeignKey("IdProducto")]
         public ICollection<CarritoCompras> CarritoCompras { get; set; }
     }

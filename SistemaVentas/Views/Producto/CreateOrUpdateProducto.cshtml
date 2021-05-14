@@ -28,6 +28,7 @@
                 @using (Html.BeginForm("CreateOrUpdateProducto", "Producto", FormMethod.Post))
                 {
                     @Html.HiddenFor(x => x.IdProducto)
+                    @Html.HiddenFor(x=> x.IdVendedor)
                     <div class="row">
                         <div class="col-sm-12">
                             <div class="card">
@@ -83,9 +84,7 @@
                         <input type="submit" class="btn btn-primary" value="Registrar" />
                         <a href="/Producto/Index" class="btn btn-warning">Cancelar</a>
                     </div>
-                }
-
-
+                 }
             </div>
 
             @if (ViewBag.Result != null && ViewBag.Result == false)
