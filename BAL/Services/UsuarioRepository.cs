@@ -192,13 +192,13 @@ namespace BAL.Services
 
                 var _us = await EditUsu(usu_);
 
-                var info = context.UserInfo.Find(modelo.idUser);
-                info.NombreUsuario = modelo.Nombre;
-                info.ApellidoUsuario = modelo.Apellido;
-                info.direccion = modelo.direccion;
-                info.documento = modelo.documento;
-                info.FechaNacimiento = modelo.FechaNacimiento;
-                info.telefono = modelo.telefono;
+                var info = context.UserInfo.Where(x => x.idUser == modelo.idUser).FirstOrDefault();
+                info.NombreUsuario = info != null ? modelo.Nombre : string.Empty;
+                info.ApellidoUsuario = info != null ? modelo.Apellido : string.Empty;
+                info.direccion = info != null ? modelo.direccion : string.Empty;
+                info.documento = info != null ? modelo.documento : string.Empty;
+                info.FechaNacimiento = info != null ? modelo.FechaNacimiento : string.Empty;
+                info.telefono = info != null ? modelo.telefono : string.Empty;
 
                 var _info = await EditInfo(info);
 
