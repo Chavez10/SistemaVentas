@@ -73,14 +73,14 @@ namespace SistemaVentas.Controllers
             using (ComprasContext db = new ComprasContext())
             {
                 var usu = db.usuarios.Find(id);
-                var info = db.UserInfo.Find(id);
+                var info = db.UserInfo.Where(x=>x.idUser == id).FirstOrDefault();
 
-                modelo.Nombre = info.NombreUsuario;
-                modelo.Apellido = info.ApellidoUsuario;
-                modelo.direccion = info.direccion;
-                modelo.documento = info.documento;
-                modelo.telefono = info.telefono;
-                modelo.FechaNacimiento = info.FechaNacimiento;
+                modelo.Nombre = info.NombreUsuario != null ? info.NombreUsuario : string.Empty;
+                modelo.Apellido = info.ApellidoUsuario != null ? info.ApellidoUsuario : string.Empty;
+                modelo.direccion = info.direccion != null ? info.direccion : string.Empty;
+                modelo.documento = info.documento != null ? info.documento : string.Empty;
+                modelo.telefono = info.telefono != null ? info.telefono : string.Empty;
+                modelo.FechaNacimiento = info.FechaNacimiento != null ? info.FechaNacimiento : string.Empty;
 
                 modelo.idUser = usu.idUser;
                 modelo.UserName = usu.UserName;
