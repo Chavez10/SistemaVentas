@@ -70,7 +70,8 @@ namespace SistemaVentas.Controllers
                     precio = "$ " + x.precio,
                     idProducto = x.IdProducto,
                     descripcion = x.description,
-                    foto = x.photo
+                    foto = x.photo,
+                    IdVendedor = x.IdVendedor
                 }).ToList();
 
             return Json(new
@@ -125,6 +126,11 @@ namespace SistemaVentas.Controllers
             var respuesta = await ProductoRepo.DeleteProductos(IdProducto);
 
             return Json(new { respuesta });
+        }
+        
+        public ActionResult ListaProductos()
+        {
+            return View();
         }
 
     }
