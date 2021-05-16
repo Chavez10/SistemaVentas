@@ -40,11 +40,6 @@
             },
             {
                 "orderable": false,
-                "data": "IdVendedor"
-
-            },
-            {
-                "orderable": false,
                 "render": function (data, type, row) {
                     return '<center><a href="/Producto/CreateOrUpdateProducto?id=' + row.idProducto + '" style="width:120px" class="btn btn-info"><i class="bi bi-pencil"></i> Editar</a>' +
                         '<a href="#" onclick="EliminarProducto(' + row.idProducto + ')" class="btn btn-danger" style="width:120px"><i class="bi bi-trash"></i> Eliminar</a></center>';

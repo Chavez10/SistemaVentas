@@ -60,7 +60,7 @@ namespace SistemaVentas.Controllers
                     }
                     else if (obj.roleId == (int)rol.vendedor)
                     {
-                        return RedirectToAction("IndexVendedor", "Home");
+                        return RedirectToAction("Index", "Producto");
                     }
                     else
                     {

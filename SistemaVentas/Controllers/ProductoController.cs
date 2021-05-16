@@ -37,7 +37,8 @@ namespace SistemaVentas.Controllers
 
         public ActionResult ObtenerProductos(DataTableJS request)
         {
-            var result = ProductoRepo.ObtenerProductos(request);
+            int idVendedor = int.Parse(Session["UserID"].ToString());
+            var result = ProductoRepo.ObtenerProductos(request).Where(x => x.IdVendedor == idVendedor);
 
             var lista = result.Select(
                 x => new
@@ -46,8 +47,7 @@ namespace SistemaVentas.Controllers
                     categoria = GeneralHelper.GetDescriptionFromEnumValue(x.category),
                     existencia = x.cantidad,
                     precio = "$ "+x.precio,
-                    idProducto = x.IdProducto,
-                    idVendedor = x.IdVendedor
+                    idProducto = x.IdProducto
                 }).ToList();
 
             return Json(new {
