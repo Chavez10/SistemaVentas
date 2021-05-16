@@ -46,7 +46,8 @@ namespace SistemaVentas.Controllers
                     categoria = GeneralHelper.GetDescriptionFromEnumValue(x.category),
                     existencia = x.cantidad,
                     precio = "$ "+x.precio,
-                    idProducto = x.IdProducto
+                    idProducto = x.IdProducto,
+                    idVendedor = x.IdVendedor
                 }).ToList();
 
             return Json(new {
