@@ -1,0 +1,106 @@
+﻿@using DAL.ViewModels;
+@model List<DetalleProductosCarrito>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@if (ViewBag.Exito != null && ViewBag.Exito == true)
+{
+    <script>
+        alertify.alert('Agregado al carrito', 'El producto se agrego correctamente!');
+    </script>
+}
+<br /><br />
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8 justify-content-center">
+            <center>
+                <h2>
+                    Productos agregados al carrito
+                </h2>
+            </center>
+            <br />
+            <table class="table table-hover table-striped table-responsive-sm" style="margin: 0 auto !important">
+                <thead>
+                    <tr>
+                        <th>Producto</th>
+                        <th>Fecha</th>
+                        <th>Precio</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var p in Model)
+                    {
+                        <tr>
+                            <td>@p.NombreProducto</td>
+                            <td>@p.Fecha</td>
+                            <td>$ @p.Precio</td>
+                            <td>
+                                <button class="btn btn-danger" onclick="DeleteCarrito(@p.IdCarrito)"><i class="bi bi-x-circle"></i> Quitar del Carrito</button>
+                                <button class="btn btn-success"><i class="bi bi-cash"></i> Pagar</button>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+</div>
+
+
+@*<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+    Launch demo modal
+</button>*@
+
+<!-- Modal -->
+@*<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Producto a Pagar</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <table>
+                    <thead>
+                        <tr></tr>
+
+                    </thead>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>*@
+
+<script>
+    
+    function DeleteCarrito(IdCarrito)
+    {
+        alertify.alert('Eliminar Producto', '¿Desea eliminar el producto del carrito?',
+            function () { AgregarAlCarrito(IdCarrito) });
+    }
+
+    function AgregarAlCarrito(IdCarrito) {
+        $.post("/CarritoCompra/EliminarCarrito", { IdCarrito: IdCarrito }, function (response) {
+            console.log(response.respuesta);
+            if (response.respuesta) {
+                
+                window.location.reload();
+                //alertify.success("El producto se elimino correctamente del carrito");
+            }
+            else {
+                alertify.error("Hubo un problema al agregar al producto");
+            }
+        });
+    }
+</script>

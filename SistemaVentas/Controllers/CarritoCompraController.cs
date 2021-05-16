@@ -25,9 +25,14 @@ namespace SistemaVentas.Controllers
         }
 
         // GET: CarritoCompra
-        public ActionResult Index()
+        public async  Task<ActionResult> Index(bool isExito=false)
         {
-            return View();
+            if (isExito) { ViewBag.Exito = true; }
+                
+            var UserId = Convert.ToInt32(Session["UserID"]);
+            var lista = await carritoCompraRepository.DetalleProductosCarrito(UserId);
+
+            return View(lista);
         }
 
         public async Task<ActionResult> GetProductosByUser()
@@ -37,5 +42,21 @@ namespace SistemaVentas.Controllers
 
             return Json(Result,JsonRequestBehavior.AllowGet);
         }
+
+        public async Task<ActionResult> AgregarAlCarrito(int IdProducto)
+        {
+            var UserId = Convert.ToInt32(Session["UserID"]);
+            var respuesta = await carritoCompraRepository.AgregarAlCarrito(UserId,IdProducto);
+
+            return Json(new { respuesta });
+        }
+
+        public async Task<ActionResult> EliminarCarrito(int IdCarrito)
+        {
+            var respuesta = await carritoCompraRepository.EliminarDelCarrito(IdCarrito);
+
+            return Json(new { respuesta });
+        }
+
     }
 }

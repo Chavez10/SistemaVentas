@@ -15,4 +15,13 @@ namespace DAL.ViewModels
         public string NombreCategoria { get; set; }
         public int Existencia { get; set; }
     }
+
+    public class DetalleProductosCarrito
+    {
+        public string NombreProducto { get; set; }
+        public string Fecha { get; set; }
+        public double Precio { get; set; }
+        public int IdProducto { get; set; }
+        public int IdCarrito { get; set; }
+    }
 }

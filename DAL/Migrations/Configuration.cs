@@ -44,6 +44,30 @@
             };
             context.usuarios.Add(newUser);
             context.SaveChanges();
+
+            var prod = new List<Productos>()
+            {
+                new Productos
+                {
+                    nombreProducto = "Nintendo Switch",
+                    description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vestibulum lorem ex, at molestie dolor fringilla id."+
+                                  "Sed gravida ornare dignissim. Aliquam quis est elit. In hac habitasse platea dictumst. Duis sed lectus sapien",
+                    category =  Enums.category.tecnologia,
+                    photo = "https://laopinion.com/wp-content/uploads/sites/3/2020/09/71CZEg9K3AL._AC_SL1500_.jpg?quality=80&strip=all&w=1200",
+                    cantidad = 2,
+                    precio = 350.50
+                },
+                new Productos
+                {
+                    nombreProducto = "Telefono",
+                    description = "Sed gravida ornare dignissim. Aliquam quis est elit. In hac habitasse platea dictumst. Duis sed lectus sapien",
+                    category =  Enums.category.tecnologia,
+                    photo = "https://i.blogs.es/575d4f/android/840_560.jpg",
+                    cantidad = 5,
+                    precio = 290.99,
+                    IdVendedor = newUser.idUser
+                }
+            };
         }
     }
 }

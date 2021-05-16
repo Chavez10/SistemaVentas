@@ -110,7 +110,7 @@
                 "orderable": false,
                 "render": function (data, type, row) {
 
-                    return '<button class="btn btn-success"><i class="bi bi-cart-plus"></i> Agregar al Carrito</button>&nbsp;&nbsp;' +
+                    return '<button class="btn btn-success" onclick="VerificarSesion(' + row.idProducto +')"><i class="bi bi-cart-plus"></i> Agregar al Carrito</button>&nbsp;&nbsp;' +
                         '<button class="btn btn-default"><i class="bi bi-plus-circle"></i> Ver más...</button>';
                 }
             }

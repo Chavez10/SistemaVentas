@@ -313,11 +313,11 @@
     <Content Include="Views\Home\IndexVendedor.cshtml" />
     <Content Include="Views\Shared\_LayoutVendedor.cshtml" />
     <Content Include="Views\Producto\ListaProductos.cshtml" />
+    <Content Include="Views\CarritoCompra\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
-    <Folder Include="Views\CarritoCompra\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

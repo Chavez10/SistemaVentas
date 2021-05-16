@@ -103,7 +103,7 @@
 
                             @if (Session["UserName"] != null)
                             {
-                                <a href="#" title="Productos agregados al carrito" style="text-decoration:none">
+                                <a href="@Url.Action("Index","CarritoCompra")" title="Productos agregados al carrito" style="text-decoration:none">
                                     <i class="bi bi-cart-check" style="color:white;font-size:20px"></i>
                                     <label id="resultado" style="vertical-align: top;background-color:white;padding:2px;font-size:9px;border-radius:35%;font-weight: bold"></label>&nbsp;&nbsp;&nbsp;&nbsp;
                                 </a>

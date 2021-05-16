@@ -36,9 +36,11 @@ namespace SistemaVentas.Controllers
         }
 
         public ActionResult ObtenerProductos(DataTableJS request)
-        {
+        {            
+            var isAdmin = (int)Enums.rol.admin == (int)Session["Rol"];
             int idVendedor = int.Parse(Session["UserID"].ToString());
-            var result = ProductoRepo.ObtenerProductos(request).Where(x => x.IdVendedor == idVendedor);
+            var result = isAdmin ? ProductoRepo.ObtenerProductos(request) :
+                         ProductoRepo.ObtenerProductos(request).Where(x => x.IdVendedor == idVendedor);
 
             var lista = result.Select(
                 x => new

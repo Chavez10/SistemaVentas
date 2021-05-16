@@ -132,3 +132,39 @@
         </div>
     </div>
 </div>
+
+<script>
+    function VerificarSesion(Idproducto)
+    {
+        @if (Session["UserName"] == null)
+        {
+            <text>
+        alertify.alert('No ha iniciado sesión', 'Debe iniciar sesión para poder agregar productos al carrito!');
+            </text>
+        }
+        else
+        {
+             <text>
+        console.log(Idproducto);
+        alertify.alert('Agregar Productos', '¿Desea agregar el producto al carrito?',
+            function () { AgregarAlCarrito(Idproducto)  });
+            </text>
+        }
+    }
+
+    function AgregarAlCarrito(idProd) {
+        console.log(idProd);
+        $.post("/CarritoCompra/AgregarAlCarrito", { IdProducto: idProd }, function (response)
+        {
+            console.log(response.respuesta);
+            if (response.respuesta)
+            {
+                window.location.href = "/CarritoCompra/Index?Active=" + true;
+            }
+            else
+            {
+                alertify.error("Hubo un problema al agregar al producto")
+            }
+        });
+    }
+</script>
