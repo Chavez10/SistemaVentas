@@ -123,7 +123,7 @@
             "sZeroRecords": "NO EXISTE NINGUN REGISTRO",
             "oPaginate": { "sNext": "Siguiente", "sPrevious": "Anterior" },
             "sProcessing": "Procesando..."
-        }
+        }, dom: 'Bfrtip', buttons: [{ extend: 'excel' }]
     });
 });
 

@@ -52,6 +52,7 @@ namespace SistemaVentas.Controllers
                 {
                     Session["UserID"] = obj.idUser.ToString();
                     Session["UserName"] = obj.UserName.ToString();
+                    Session["Rol"] = obj.roleId;
 
 
                     if(obj.roleId == (int)rol.admin)
