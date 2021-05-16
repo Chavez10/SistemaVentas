@@ -83,7 +83,19 @@
             "sZeroRecords": "NO EXISTE NINGUN REGISTRO",
             "oPaginate": { "sNext": "Siguiente", "sPrevious": "Anterior" },
             "sProcessing": "Procesando..."
-        }
+        },
+        dom: 'Bfrtip',
+        buttons: [
+            {
+                extend: 'excel',
+                exportOptions: { columns: "th:not(:last-child)" }
+            },
+            {
+                extend: 'pdfHtml5',
+                exportOptions: { columns: "th:not(:last-child)" }
+
+            }
+        ]
     });
 });
 
