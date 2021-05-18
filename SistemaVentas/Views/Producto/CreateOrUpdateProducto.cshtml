@@ -4,6 +4,16 @@
 @{
     ViewBag.Title = "CreateOrUpdateProducto";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+
+    if ((int)Session["Rol"] == (int)Enums.rol.vendedor)
+    {
+        Layout = "~/Views/Shared/_LayoutVendedor.cshtml";
+    }
+    else
+    {
+        Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    }
+
     var isEdit = ViewBag.IsEdit != null ? (bool)ViewBag.IsEdit : false;
 }
 
@@ -70,7 +80,7 @@
                                     </div>
                                     <div class="form-group">
                                         <div style="text-align:left;">
-                                            <label><b>DUI:</b></label>
+                                            <label><b>Categoria:</b></label>
                                             @Html.CustomEnumDropDownListForCategories(x => x.category, new { @class = "form-control" })
                                             @Html.ValidationMessageFor(x => x.photo, null, new { @class = "text-danger" })
                                         </div>

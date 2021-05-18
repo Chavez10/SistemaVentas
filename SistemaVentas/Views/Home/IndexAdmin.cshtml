@@ -4,5 +4,46 @@
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<center><h2>Bienvenido Admin</h2></center>
 
+<br />
+<br />
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <center><h2>Bienvenido Administrador</h2></center>
+            <br />
+            <br />
+            <center><h3>Estadisticas</h3></center>
+            <br />
+            <table style="margin: 0 auto">
+                <tr>
+                    <td style="background-color: lightslategray;border: 2px solid black">
+                        <img src="http://simpleicon.com/wp-content/uploads/user1.png" width="150" height="150" />
+                    </td>
+                    <td style="background-color: #e1d9d9;border: 2px solid black;padding: 10px !important">
+                        <center style="color: blue;font-size:25px;">
+                            Total de usuarios: <b>@ViewBag.Usuario</b>
+                        </center>
+                    </td>
+                </tr>
+            </table>
+            <br />
+            <br />
+            <table style="margin: 0 auto">
+                <tr>
+                    <td style="background-color: lightslategray;border: 2px solid black">
+                        <img src="https://svgsilh.com/png-1024/3318480.png" width="150" height="150" />
+                    </td>
+                    <td style="background-color: #e1d9d9;border: 2px solid black;padding: 10px !important">
+                        <center style="color: blue;font-size:25px;">
+                            Total de productos: <b>@ViewBag.Producto</b>
+                        </center>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+</div>

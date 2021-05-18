@@ -34,7 +34,7 @@
             context.SaveChanges();
 
 
-            //Create User
+            //Create User Admin
             var newUser = new Usuarios
             {
                 UserName = "Admin",
@@ -44,6 +44,18 @@
             };
             context.usuarios.Add(newUser);
             context.SaveChanges();
+
+            //Create User Vendedor
+            var newUser2 = new Usuarios
+            {
+                UserName = "vendedor",
+                email = "vendedor@vendedor.com",
+                pass = Helpers.GeneralHelper.EncriptarPassword("root"),
+                roleId = (int)rol.vendedor
+            };
+            context.usuarios.Add(newUser2);
+            context.SaveChanges();
+
 
             var prod = new List<Productos>()
             {
@@ -65,9 +77,16 @@
                     photo = "https://i.blogs.es/575d4f/android/840_560.jpg",
                     cantidad = 5,
                     precio = 290.99,
-                    IdVendedor = newUser.idUser
+                    IdVendedor = newUser2.idUser
                 }
             };
+
+            foreach (var item in prod)
+            {
+                context.Productos.AddOrUpdate(item);
+                context.SaveChanges();
+            }
+            
         }
     }
 }
